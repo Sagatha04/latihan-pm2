@@ -50,19 +50,21 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA60p2bP9MwGwzn-W9Dca363W1TofM275E',
-    appId: '1:520607727993:android:e8ba20e300d07cf453efa8',
-    messagingSenderId: '520607727993',
-    projectId: 'latihan-22312093',
-    storageBucket: 'latihan-22312093.appspot.com',
+    apiKey: 'AIzaSyDhj5T6hUpONFZblArcE68EDw_nP__J-WQ',
+    appId: '1:399678242496:android:40d81d529e240403ac7725',
+    messagingSenderId: '399678242496',
+    projectId: 'latihan-pm2-22312094',
+    storageBucket: 'latihan-pm2-22312094.firebasestorage.app',
   );
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDK2erm_IgnsyaabX1_QjbtkYL-pqtaQkc',
-    appId: '1:520607727993:web:cb27d47561d0c68353efa8',
-    messagingSenderId: '520607727993',
-    projectId: 'latihan-22312093',
-    authDomain: 'latihan-22312093.firebaseapp.com',
-    storageBucket: 'latihan-22312093.appspot.com',
+    apiKey: 'AIzaSyCbLjvwD22TLGBQmiNrb0We-Y5MyPGqvNY',
+    appId: '1:399678242496:web:d68349946d581bcbac7725',
+    messagingSenderId: '399678242496',
+    projectId: 'latihan-pm2-22312094',
+    authDomain: 'latihan-pm2-22312094.firebaseapp.com',
+    storageBucket: 'latihan-pm2-22312094.firebasestorage.app',
+    measurementId: 'G-FVEHMZZ5K3',
   );
+
 }
