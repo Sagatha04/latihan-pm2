@@ -14,10 +14,9 @@ import '../controllers/home_controller.dart';
 class HomeView extends GetView<HomeController> {
   final cAuth = Get.find<AuthController>();
 
-  HomeView({super.key});
   @override
   Widget build(BuildContext context) {
-    return const DashboardAdmin();
+    return DashboardAdmin();
   }
 }
 
@@ -31,22 +30,26 @@ class DashboardAdmin extends StatefulWidget {
 class _DashboardAdminState extends State<DashboardAdmin> {
   final cAuth = Get.find<AuthController>();
   int _index = 0;
-  final List<Map> _fragment = [
+  List<Map> _fragment = [
     {
       'title': 'Dashboard',
       'view': MahasiswaView(),
-      'add': () => MahasiswaAddView()
+      'add': () => MahasiswaView(),
     },
     {
       'title': 'Data Mahasiswa',
       'view': MahasiswaView(),
-      'add': () => MahasiswaAddView()
+      'add': () => MahasiswaAddView(),
     },
-    {'title': 'Data Dosen', 'view': DosenView(), 'add': () => DosenAddView()},
     {
-      'title': 'Data Pegawai',
+      'title': 'Data Dosen',
+      'view': DosenView(),
+      'add': () => DosenAddView(),
+    },
+    {
+      'title': 'data_matakuliah',
       'view': PegawaiView(),
-      'add': () => PegawaiAddView()
+      'add': () => PegawaiAddView(),
     },
   ];
 
@@ -73,7 +76,7 @@ class _DashboardAdminState extends State<DashboardAdmin> {
     return Drawer(
       child: ListView(
         children: [
-          const DrawerHeader(
+          DrawerHeader(
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
@@ -81,17 +84,13 @@ class _DashboardAdminState extends State<DashboardAdmin> {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
-                  radius: 40, // ukuran foto
-                  backgroundImage: NetworkImage(
-                    'https://cdn.britannica.com/73/234573-050-8EE03E16/Cristiano-Ronaldo-ceremony-rename-airport-Santa-Cruz-Madeira-Portugal-March-29-2017.jpg',
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
+                Icon(
+                  Icons.account_circle,
+                  size: 80,
+                  color: Colors.white,
                 ),
                 Text(
-                  "Rexlicky Verdhika Sagatha",
+                  "REXLICKY VERDHIKA SAGATHA",
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -115,55 +114,55 @@ class _DashboardAdminState extends State<DashboardAdmin> {
               setState(() => _index = 0);
               Get.back();
             },
-            leading: const Icon(Icons.dashboard),
-            title: const Text('Dashboard'),
-            trailing: const Icon(Icons.navigate_next),
-            iconColor: Colors.blue,
-            textColor: Colors.blue,
+            leading: Icon(Icons.dashboard),
+            title: Text('Dashboard'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: const Color.fromARGB(255, 0, 95, 150),
+            textColor: const Color.fromARGB(255, 0, 95, 150),
           ),
           ListTile(
             onTap: () {
               setState(() => _index = 1);
               Get.back();
             },
-            leading: const Icon(Icons.people),
-            title: const Text('Data Mahasiswa'),
-            trailing: const Icon(Icons.navigate_next),
-            iconColor: Colors.blue,
-            textColor: Colors.blue,
+            leading: Icon(Icons.people),
+            title: Text('Data Mahasiswa'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: const Color.fromARGB(255, 0, 95, 150),
+            textColor: const Color.fromARGB(255, 0, 95, 150),
           ),
           ListTile(
             onTap: () {
               setState(() => _index = 2);
               Get.back();
             },
-            leading: const Icon(Icons.people),
-            title: const Text('Data Dosen'),
-            trailing: const Icon(Icons.navigate_next),
-            iconColor: Colors.blue,
-            textColor: Colors.blue,
+            leading: Icon(Icons.people),
+            title: Text('Data Dosen'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: const Color.fromARGB(255, 0, 95, 150),
+            textColor: const Color.fromARGB(255, 0, 95, 150),
           ),
           ListTile(
             onTap: () {
               setState(() => _index = 3);
               Get.back();
             },
-            leading: const Icon(Icons.people),
-            title: const Text('Data Pegawai'),
-            trailing: const Icon(Icons.navigate_next),
-            iconColor: Colors.blue,
-            textColor: Colors.blue,
+            leading: Icon(Icons.people),
+            title: Text('matakuliah_22312094'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: const Color.fromARGB(255, 0, 95, 150),
+            textColor: const Color.fromARGB(255, 0, 95, 150),
           ),
           ListTile(
             onTap: () {
               Get.back();
               cAuth.logout();
             },
-            leading: const Icon(Icons.logout),
-            title: const Text('Logout'),
-            trailing: const Icon(Icons.navigate_next),
-            iconColor: Colors.blue,
-            textColor: Colors.blue,
+            leading: Icon(Icons.logout),
+            title: Text('Logout'),
+            trailing: Icon(Icons.navigate_next),
+            iconColor: Colors.red,
+            textColor: Colors.red,
           ),
         ],
       ),

@@ -3,86 +3,79 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PegawaiController extends GetxController {
-  //TODO: Implement pegawaiController
-  late TextEditingController cIdstaf;
-  late TextEditingController cNama;
-  late TextEditingController cJabatan;
-  late TextEditingController cGedung;
+  late TextEditingController cKodeMatakuliah;
+  late TextEditingController cNamaMahasiswa;
+  late TextEditingController cSksMatakuliah;
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   Future<QuerySnapshot<Object?>> GetData() async {
-    CollectionReference pegawai = firestore.collection('pegawai');
-    return pegawai.get();
+    CollectionReference matakuliah =
+        firestore.collection('matakuliah_22312094');
+    return matakuliah.get();
   }
 
   Stream<QuerySnapshot<Object?>> StreamData() {
-    CollectionReference pegawai = firestore.collection('pegawai');
-    return pegawai.snapshots();
+    CollectionReference matakuliah =
+        firestore.collection('matakuliah_22312094');
+    return matakuliah.snapshots();
   }
 
-  void add(String idstaf, String nama, String jabatan, String gedung) async {
-    CollectionReference pegawai = firestore.collection("pegawai");
+  void add(
+      String kodeMatakuliah, String namaMahasiswa, String sksMatakuliah) async {
+    CollectionReference matakuliah =
+        firestore.collection("matakuliah_22312094");
 
     try {
-      await pegawai.add({
-        "idstaf": idstaf,
-        "nama": nama,
-        "jabatan": jabatan,
-        "gedung": gedung,
+      await matakuliah.add({
+        "kode_matakuliah": kodeMatakuliah,
+        "nama_mahasiswa": namaMahasiswa,
+        "sks_matakuliah": sksMatakuliah,
       });
       Get.defaultDialog(
           title: "Berhasil",
-          middleText: "Berhasil menyimpan data pegawai",
+          middleText: "Berhasil menyimpan data matakuliah",
           onConfirm: () {
-            cIdstaf.clear();
-            cNama.clear();
-            cJabatan.clear();
-            cGedung.clear();
+            cKodeMatakuliah.clear();
+            cNamaMahasiswa.clear();
+            cSksMatakuliah.clear();
             Get.back();
             Get.back();
-            Get.back();
-            Get.back();
-            textConfirm:
-            "OK";
           });
     } catch (e) {
       print(e);
       Get.defaultDialog(
         title: "Terjadi Kesalahan",
-        middleText: "Gagal Menambahkan pegawai.",
+        middleText: "Gagal Menambahkan matakuliah.",
       );
     }
   }
 
   Future<DocumentSnapshot<Object?>> GetDataById(String id) async {
-    DocumentReference docRef = firestore.collection("pegawai").doc(id);
-
+    DocumentReference docRef =
+        firestore.collection("matakuliah_22312094").doc(id);
     return docRef.get();
   }
 
-  void Update(String idstaf, String nama, String jabatan, String gedung,
+  void Update(String kodeMatakuliah, String namaMahasiswa, String sksMatakuliah,
       String id) async {
-    DocumentReference pegawaiById = firestore.collection("pegawai").doc(id);
+    DocumentReference matakuliahById =
+        firestore.collection("matakuliah_22312094").doc(id);
 
     try {
-      await pegawaiById.update({
-        "idstaf": idstaf,
-        "nama": nama,
-        "jabatan": jabatan,
-        "gedung": gedung,
+      await matakuliahById.update({
+        "kode_matakuliah": kodeMatakuliah,
+        "nama_mahasiswa": namaMahasiswa,
+        "sks_matakuliah": sksMatakuliah,
       });
 
       Get.defaultDialog(
         title: "Berhasil",
-        middleText: "Berhasil mengubah data pegawai.",
+        middleText: "Berhasil mengubah data matakuliah.",
         onConfirm: () {
-          cIdstaf.clear();
-          cNama.clear();
-          cJabatan.clear();
-          cGedung.clear();
-          Get.back();
-          Get.back();
+          cKodeMatakuliah.clear();
+          cNamaMahasiswa.clear();
+          cSksMatakuliah.clear();
           Get.back();
           Get.back();
         },
@@ -92,13 +85,14 @@ class PegawaiController extends GetxController {
       print(e);
       Get.defaultDialog(
         title: "Terjadi Kesalahan",
-        middleText: "Gagal Menambahkan pegawai.",
+        middleText: "Gagal mengubah matakuliah.",
       );
     }
   }
 
   void delete(String id) {
-    DocumentReference docRef = firestore.collection("pegawai").doc(id);
+    DocumentReference docRef =
+        firestore.collection("matakuliah_22312094").doc(id);
 
     try {
       Get.defaultDialog(
@@ -126,19 +120,17 @@ class PegawaiController extends GetxController {
 
   @override
   void onInit() {
-    cIdstaf = TextEditingController();
-    cNama = TextEditingController();
-    cJabatan = TextEditingController();
-    cGedung = TextEditingController();
+    cKodeMatakuliah = TextEditingController();
+    cNamaMahasiswa = TextEditingController();
+    cSksMatakuliah = TextEditingController();
     super.onInit();
   }
 
   @override
   void onClose() {
-    cIdstaf.dispose();
-    cNama.dispose();
-    cJabatan.dispose();
-    cGedung.dispose();
+    cKodeMatakuliah.dispose();
+    cNamaMahasiswa.dispose();
+    cSksMatakuliah.dispose();
     super.onClose();
   }
 }

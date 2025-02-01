@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:myapp/app/modules/pegawai/controllers/pegawai_controller.dart';
 
 class PegawaiAddView extends GetView<PegawaiController> {
   const PegawaiAddView({Key? key}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tambah Pegawai'),
+        title: const Text('Tambah Matakuliah'),
         centerTitle: true,
       ),
       body: Padding(
@@ -17,41 +17,29 @@ class PegawaiAddView extends GetView<PegawaiController> {
         child: Column(
           children: [
             TextField(
-              controller: controller.cIdstaf,
+              controller: controller.cKodeMatakuliah,
               autocorrect: false,
               textInputAction: TextInputAction.next,
-              decoration: InputDecoration(labelText: "idStaf"),
+              decoration: InputDecoration(labelText: "Kode Matakuliah"),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
             TextField(
-              controller: controller.cNama,
-              textInputAction: TextInputAction.done,
-              decoration: InputDecoration(labelText: "Nama"),
+              controller: controller.cNamaMahasiswa,
+              textInputAction: TextInputAction.next,
+              decoration: InputDecoration(labelText: "Nama Mahasiswa"),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
             TextField(
-              controller: controller.cJabatan,
+              controller: controller.cSksMatakuliah,
               textInputAction: TextInputAction.done,
-              decoration: InputDecoration(labelText: "jabatan"),
+              decoration: InputDecoration(labelText: "SKS Matakuliah"),
             ),
-            TextField(
-              controller: controller.cGedung,
-              textInputAction: TextInputAction.done,
-              decoration: InputDecoration(labelText: "Gedung"),
-            ),
-            SizedBox(
-              height: 30,
-            ),
+            SizedBox(height: 30),
             ElevatedButton(
               onPressed: () => controller.add(
-                controller.cIdstaf.text,
-                controller.cNama.text,
-                controller.cJabatan.text,
-                controller.cGedung.text,
+                controller.cKodeMatakuliah.text,
+                controller.cNamaMahasiswa.text,
+                controller.cSksMatakuliah.text,
               ),
               child: Text("Simpan"),
             )

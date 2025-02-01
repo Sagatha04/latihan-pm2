@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:myapp/app/modules/pegawai/controllers/pegawai_controller.dart';
 import 'package:myapp/app/modules/pegawai/views/pegawai_update_view.dart';
-
-import '../controllers/pegawai_controller.dart';
 
 class PegawaiView extends GetView<PegawaiController> {
   void showOption(id) async {
@@ -44,7 +42,6 @@ class PegawaiView extends GetView<PegawaiController> {
       stream: Get.put(PegawaiController()).StreamData(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.active) {
-          // mengambil data
           var listAllDocs = snapshot.data?.docs ?? [];
           return listAllDocs.length > 0
               ? ListView.builder(
@@ -55,9 +52,9 @@ class PegawaiView extends GetView<PegawaiController> {
                       backgroundColor: Color.fromARGB(255, 248, 248, 248),
                     ),
                     title: Text(
-                        "${(listAllDocs[index].data() as Map<String, dynamic>)["nama"]}"),
+                        "${(listAllDocs[index].data() as Map<String, dynamic>)["nama_mahasiswa"]}"),
                     subtitle: Text(
-                        "${(listAllDocs[index].data() as Map<String, dynamic>)["idstaf"]}"),
+                        "${(listAllDocs[index].data() as Map<String, dynamic>)["kode_matakuliah"]}"),
                     trailing: IconButton(
                         onPressed: () => showOption(listAllDocs[index].id),
                         icon: Icon(Icons.more_vert)),
